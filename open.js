@@ -1,5 +1,5 @@
 /**
- * Show Time
+ * I'm shouldn't alive, unless was a reason.
  */
 
 //函数组合
@@ -67,6 +67,7 @@ const compose = function(f, g) {
 
 
 
+
 // // 容器 表达式形式，仍可用class关键字转换风格
 // const Maybe = function(x) { this.val = x }
 // Maybe.of = x => new Maybe(x)
@@ -80,11 +81,4 @@ const compose = function(f, g) {
 // }
 // Maybe.of('bocaigua').map(x => x.match(/a/ig)).val   // [ 'a', 'a']
 
-//似乎不太适用于封装、
-
-// const Left = function(x) { this.val = x }
-// Left.of = x => new Left(x)
-// Left.prototype.map = function(f) {
-// 	return this
-// }
-// console.log(Left.of('rain').map(str => 'b' + str))
+//似乎不太适用于封装、更适合于异步回调
