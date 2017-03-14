@@ -1,6 +1,7 @@
 /**
  * Show Time
  */
+
 //函数组合
 
 const compose = function(f, g) {
@@ -18,7 +19,7 @@ const compose = function(f, g) {
 
 
 //容器映射
-//面向对象编程
+//面向对象
 
 // class Func {
 // 	constructor(val) {
@@ -30,16 +31,17 @@ const compose = function(f, g) {
 // 	}
 // }
 //
-// (new Func(2)).Map(x => x + 2) // Func { val: 4 }
+// console.log((new Func(0)).Map(x => x + 1)); // Func { val: 1 }
 
 
-//函数式编程
+//函数式
+// const Func = function(x) { this.val = x }
+// Func.of = val => new Func(val)
+// Func.of([1, 2, 3]).val.map(x => x + 2)  // [3, 4, 5]
 
-// Func.of = function(val) {
-// 	return new Func(val)
-// }
-//
-// Func.of(2).map(x => x + 2)
+
+
+
 
 // const origin = [1, 2, 3]
 
@@ -62,3 +64,20 @@ const compose = function(f, g) {
 // // || 自由切换
 // // \/
 // const makes = arr => arr.map(x => x)
+
+
+
+// // 容器 表达式形式，仍可用class关键字转换风格
+// const Maybe = function(x) { this.val = x }
+// Maybe.of = x => new Maybe(x)
+// Maybe.prototype = {
+// 	isNothing() {
+// 		return (this.val === null || this.val === undefined)
+// 	},
+// 	map(f) {
+// 		return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.val))
+// 	}
+// }
+// Maybe.of('bocaigua').map(x => x.match(/a/ig)).val   // [ 'a', 'a']
+
+//似乎不太适用于封装
