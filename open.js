@@ -16,14 +16,27 @@ const result = compose(head, exclainm)
 console.log(result(['jumpkick', 'roundhouse', 'uppercut']))
 
 
-class Func {
-	constructor(val) {
-		this.val = val
-	}
 
-	Map(f) {
-		return new Func(f(this.val))
-	}
+//容器映射
+//面向对象编程
+
+// class Func {
+// 	constructor(val) {
+// 		this.val = val
+// 	}
+//
+// 	Map(f) {
+// 		return new Func(f(this.val))
+// 	}
+// }
+//
+// (new Func(2)).Map((x) => x + 2) // Func { val: 4 }
+
+
+//函数式编程
+
+Func.of = function(val) {
+	return new Func(val)
 }
 
-const fn = new Func()
+Func.of(2).map((x) => x + 2)
