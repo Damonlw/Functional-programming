@@ -80,4 +80,11 @@ const compose = function(f, g) {
 // }
 // Maybe.of('bocaigua').map(x => x.match(/a/ig)).val   // [ 'a', 'a']
 
-//似乎不太适用于封装
+//似乎不太适用于封装、
+
+// const Left = function(x) { this.val = x }
+// Left.of = x => new Left(x)
+// Left.prototype.map = function(f) {
+// 	return this
+// }
+// console.log(Left.of('rain').map(str => 'b' + str))
