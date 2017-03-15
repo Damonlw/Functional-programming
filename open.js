@@ -125,5 +125,34 @@ const compose = function(f, g) {
 
 
 // 柯里化
-const pair = a => b => [1, 2]
-console.log(pair(1)(2))
+// const pair = a => b => [1, 2]
+// console.log(pair(1)(2))
+
+
+
+//管道流式
+// const str = 'abcdaabc'
+// 	// const res = str
+// 	// 						.split('')
+// 	//            .reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
+//
+//
+//
+// //函数组合
+// // const split = str => str.split('')
+// // const reduce = str => str.reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
+// // const result = compose(reduce, split)
+
+
+// 尾递归
+// const acc = 0;
+// 	for (var i = 1; i <= 10; ++i)
+// 	    acc += i;
+// acc // 55
+//
+// 	const sum = (start, end, acc) =>{
+// 		if(start > end)
+// 		return acc;
+// 		return sum(start + 1, end, acc + start)
+// 	}
+// 	sum(1, 10, 0) // 55
