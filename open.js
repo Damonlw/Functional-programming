@@ -10,6 +10,7 @@ const compose = function(f, g) {
 	}
 }
 
+
 // const head = function(x) { return x[0] }
 // const exclainm = function(x) { return x + '!' }
 // const result = compose(head, exclainm)
@@ -125,8 +126,8 @@ const compose = function(f, g) {
 
 
 // 柯里化
-// const pair = a => b => [1, 2]
-// console.log(pair(1)(2))
+// const pair = a => b => [a, b]
+// pair(1)(2)
 
 
 
