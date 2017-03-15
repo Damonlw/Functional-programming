@@ -18,29 +18,6 @@ const compose = function(f, g) {
 
 
 
-//容器映射
-//面向对象
-
-// class Func {
-// 	constructor(val) {
-// 		this.val = val
-// 	}
-//
-// 	Map(f) {
-// 		return new Func(f(this.val))
-// 	}
-// }
-//
-// console.log((new Func(0)).Map(x => x + 1)); // Func { val: 1 }
-
-
-//函数式
-// const Func = function(x) { this.val = x }
-// Func.of = val => new Func(val)
-// Func.of([1, 2, 3]).val.map(x => x + 2)  // [3, 4, 5]
-
-
-
 
 
 // const origin = [1, 2, 3]
@@ -67,8 +44,30 @@ const compose = function(f, g) {
 
 
 
+//容器映射
+//面向对象
 
-// // 容器 表达式形式，仍可用class关键字转换风格
+// class Func {
+// 	constructor(val) {
+// 		this.val = val
+// 	}
+//
+// 	Map(f) {
+// 		return new Func(f(this.val))
+// 	}
+// }
+//
+// console.log((new Func(0)).Map(x => x + 1)); // Func { val: 1 }
+
+
+//函数式
+// const Func = function(x) { this.val = x }
+// Func.of = val => new Func(val)
+// Func.of([1, 2, 3]).val.map(x => x + 2)  // [3, 4, 5]
+
+
+
+// // 容器 表达式形式，仍可用class关键字转换编码风格
 // const Maybe = function(x) { this.val = x }
 // Maybe.of = x => new Maybe(x)
 // Maybe.prototype = {
@@ -82,3 +81,49 @@ const compose = function(f, g) {
 // Maybe.of('bocaigua').map(x => x.match(/a/ig)).val   // [ 'a', 'a']
 
 //似乎不太适用于封装、更适合于异步回调
+
+
+
+
+// const arr = [1, 1, 2, 3, 5, 8]
+// // function traverseArray(arr) {
+// //   for (let i = 0; i < arr.length; i++) {
+// //     console.log(`index: ${i}, value: ${arr[i]}`)
+// //   }
+// // }
+// // traverseArray(arr)
+//
+//
+// // const rank = (item, index) => console.log(`index: ${index}, value: ${item}`)
+// // const print = (start, length) =>{
+// // 	if(start === length)
+// // 	return null;
+// // 	rank(arr[start], start)
+// // 	return print(start + 1, length)
+// // }
+// // print(0, arr.length)
+
+
+
+
+// function charge(order, callback) {
+//   console.log(callback)
+//   setTimeout(() => callback(order), 100)
+// }
+// function drink() {
+//   setTimeout(() => order.push({ name: 'D2R2', price: '66666'}), 99)
+// }
+// function print(order) {
+//   console.log(order)
+// }
+// const order = [
+//   { name: 'kindle', price: '100'},
+//   { name: 'drone', price: '200'}
+// ]
+// console.log(drink(order))
+// console.log(charge(order, print))
+
+
+// 柯里化
+const pair = a => b => [1, 2]
+console.log(pair(1)(2))
