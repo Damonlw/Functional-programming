@@ -133,9 +133,9 @@ const compose = function(f, g) {
 
 //管道流式
 // const str = 'abcdaabc'
-// 	// const res = str
-// 	// 						.split('')
-// 	//            .reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
+// const res = str
+// 						.split('')
+//            .reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
 //
 //
 //
@@ -148,8 +148,8 @@ const compose = function(f, g) {
 // 尾递归
 // const acc = 0
 // 	for (var i = 1; i <= 10; ++i)
-// 	    acc += i
-// acc // 55
+// 		acc += i
+//  acc // 55
 //
 // 	const sum = (start, end, acc) =>{
 // 		if(start > end)
