@@ -58,7 +58,7 @@ const compose = function(f, g) {
 // 	}
 // }
 //
-// console.log((new Func(0)).Map(x => x + 1)); // Func { val: 1 }
+// console.log((new Func(0)).Map(x => x + 1)) // Func { val: 1 }
 
 
 //函数式
@@ -98,7 +98,7 @@ const compose = function(f, g) {
 // // const rank = (item, index) => console.log(`index: ${index}, value: ${item}`)
 // // const print = (start, length) =>{
 // // 	if(start === length)
-// // 	return null;
+// // 	return null
 // // 	rank(arr[start], start)
 // // 	return print(start + 1, length)
 // // }
@@ -146,14 +146,14 @@ const compose = function(f, g) {
 
 
 // 尾递归
-// const acc = 0;
+// const acc = 0
 // 	for (var i = 1; i <= 10; ++i)
-// 	    acc += i;
+// 	    acc += i
 // acc // 55
 //
 // 	const sum = (start, end, acc) =>{
 // 		if(start > end)
-// 		return acc;
+// 		return acc
 // 		return sum(start + 1, end, acc + start)
 // 	}
 // 	sum(1, 10, 0) // 55
