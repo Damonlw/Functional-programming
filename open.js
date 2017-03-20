@@ -62,7 +62,6 @@ const compose = function(f, g) {
 //
 // console.log((new Func(0)).Map(x => x + 1)) // Func { val: 1 }
 
-
 //函数式
 // const Func = function(x) { this.val = x }
 // Func.of = val => new Func(val)
