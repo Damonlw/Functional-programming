@@ -20,28 +20,30 @@ const compose = function(f, g) {
 
 
 
+// // 命令式
+
+
 
 // const origin = [1, 2, 3]
-
-// // 命令式
+//
 // const makes = [] // [1, 2, 3]
-// for (i = 0; i < origin.length; i++) {
+// for (let i = 0; i < origin.length; i++) {
 // 	makes.push(origin[i])
 // }
 
-// // 表达式
+
+// select * from '前端邪会' where tag = '老司机'
+
+
+// 表达式
+// const origin = [1, 2, 3]
 // const makes = origin.map(x => x) // [1, 2, 3]
 //
 // // || 刷副本，打怪升级...K.O
 // // \/
 //
-// const makes = function(arr) {
-// 	return arr.map(x => x)  // [1, 2, 3]
-// }
-// // /\
-// // || 自由切换
-// // \/
 // const makes = arr => arr.map(x => x)
+// makes(origin)  // [1, 2, 3]
 
 
 
@@ -68,7 +70,8 @@ const compose = function(f, g) {
 
 
 
-// // 容器 表达式形式，仍可用class关键字转换编码风格
+// 仍可用class关键字转换编码风格
+
 // const Maybe = function(x) { this.val = x }
 // Maybe.of = x => new Maybe(x)
 // Maybe.prototype = {
@@ -80,6 +83,7 @@ const compose = function(f, g) {
 // 	}
 // }
 // Maybe.of('bocaigua').map(x => x.match(/a/ig)).val   // [ 'a', 'a']
+
 
 //似乎不太适用于封装、更适合于异步回调
 
@@ -125,35 +129,96 @@ const compose = function(f, g) {
 // console.log(charge(order, print))
 
 
-// 柯里化
-// const pair = a => b => [a, b]
-// pair(1)(2)
 
 
 
 //管道流式
-// const str = 'abcdaabc'
-// const res = str
-// 						.split('')
-//            .reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
-//
-//
-//
-// //函数组合
-// // const split = str => str.split('')
-// // const reduce = str => str.reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
-// // const result = compose(reduce, split)
 
+// const str = 'abcdaabc'
+// const res = str => str.split('')
+//                       .reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
+// res(str) // { a: 3, b: 2, c: 2, d: 1 }
+
+
+// //函数组合
+
+// const compose = (f, g) => x => f(g(x))
+// const str = 'abcdaabc'
+// const split = str => str.split('')
+// const reduce = str => str.reduce((pre, cur) => (pre[cur]++ || (pre[cur] = 1), pre), {})
+// const result = compose(reduce, split)
+// result(str)  // { a: 3, b: 2, c: 2, d: 1 }
 
 // 尾递归
-// const acc = 0
-// 	for (var i = 1; i <= 10; ++i)
-// 		acc += i
-//  acc // 55
+
+// let acc = 0
+// for (var i = 1; i <= 10; ++i) {
+// 	acc += i
+// }
+// acc  // 55
 //
-// 	const sum = (start, end, acc) =>{
-// 		if(start > end)
-// 		return acc
-// 		return sum(start + 1, end, acc + start)
-// 	}
-// 	sum(1, 10, 0) // 55
+//
+// const sum = (start, end, acc) =>{
+// 	if(start > end)
+// 	return acc
+// 	return sum(start + 1, end, acc + start)
+// }
+// sum(1, 10, 0) // 55
+
+// 柯里化
+// const pair = a => b => [a, b]
+// pair(1)(2)
+
+// 反柯里化
+// Function.prototype.unCurrying = function () {
+//     return this.call.bind(this);
+// }
+// function a(){
+// 	console.log(1)
+// }
+// const push = Array.prototype.push.unCurrying()
+// const obj = {}
+// push(obj, 'a', 'b')
+// console.log(obj);
+
+
+// 引用透明性
+
+// const magic = cage => cage[0] = { name: '翠花' }
+// const birdInCage = [{name: 'tweety'}]
+// magic(birdInCage)
+// birdInCage     // [{ name: '翠花' }]
+
+// const birdInCage = [{name: 'tweety'}]
+// const magic = birdInCage => birdInCage.map(bird =>({ name: '翠花' }))
+// const another = magic(birdInCage)
+// another        // [{ name: '翠花' }]
+// birdInCage     // [{ name: 'tweety' }]
+
+
+// 副作用
+
+// const arr = [1, 2, 3, 4, 5];
+//
+// // 纯的
+// arr.slice(0, 3);
+// //=> [1, 2, 3]
+//
+// arr.slice(0, 3);
+// //=> [1, 2, 3]
+//
+// // 不纯的
+// arr.splice(0, 3);
+// //=> [1, 2, 3]
+//
+// arr.splice(0, 3);
+// //=> [4, 5]
+
+// const add = val => val + 10
+// const mult = val => val * 5
+//
+// const multAfterAdd = compose(mult, add)
+// const addAfterMult = compose(add, mult)
+//
+// multAfterAdd(10) // 100
+// addAfterMult(10) // 60
