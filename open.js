@@ -65,8 +65,7 @@ const compose = function(f, g) {
 //函数式
 // const Func = function(x) { this.val = x }
 // Func.of = val => new Func(val)
-// Func.of([1, 2, 3]).val.map(x => x + 2)  // [3, 4, 5]
-
+// Func.of([1, 2, 3]).val.map(x => x + 2).map(x => x + 1)  // [4, 5, 6]
 
 
 // 仍可用class关键字转换编码风格
@@ -90,22 +89,22 @@ const compose = function(f, g) {
 
 
 // const arr = [1, 1, 2, 3, 5, 8]
-// // function traverseArray(arr) {
-// //   for (let i = 0; i < arr.length; i++) {
-// //     console.log(`index: ${i}, value: ${arr[i]}`)
-// //   }
-// // }
-// // traverseArray(arr)
+// function traverseArray(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log(`index: ${i}, value: ${arr[i]}`)
+//   }
+// }
+// traverseArray(arr)
 //
 //
-// // const rank = (item, index) => console.log(`index: ${index}, value: ${item}`)
-// // const print = (start, length) =>{
-// // 	if(start === length)
-// // 	return null
-// // 	rank(arr[start], start)
-// // 	return print(start + 1, length)
-// // }
-// // print(0, arr.length)
+// const rank = (item, index) => console.log(`index: ${index}, value: ${item}`)
+// const print = (start, length) =>{
+// 	if(start === length)
+// 	return null
+// 	rank(arr[start], start)
+// 	return print(start + 1, length)
+// }
+// print(0, arr.length)
 
 
 
@@ -165,21 +164,32 @@ const compose = function(f, g) {
 // sum(1, 10, 0) // 55
 
 // 柯里化
+
 // const pair = a => b => [a, b]
-// pair(1)(2)
+// pair(1)(2) // [1, 2]
+
+// const behavior = who => doing => thing => console.log(`现在${who}想${doing+thing}咯`)
+// const todo = behavior('我')('吃')
+// todo('饭')
 
 // 反柯里化
 // Function.prototype.unCurrying = function () {
 //     return this.call.bind(this);
 // }
-// function a(){
-// 	console.log(1)
-// }
-// const push = Array.prototype.push.unCurrying()
-// const obj = {}
-// push(obj, 'a', 'b')
-// console.log(obj);
-
+// // const push = Array.prototype.push.unCurrying()
+// // const obj = {}
+// // push(obj, 'a', 'b')
+// // console.log(obj)
+// const obj = {0:'a', 1:'b', length: 2}
+// const f = function(x){console.log(x)}
+// const map = Array.prototype.map.unCurrying()
+// map(obj, f)
+// const map = function(obj, f){
+//     return Array.prototype.map.call(obj, f);
+// };
+// const f = function(x){console.log(x)}
+// const obj = {0:'a', 1:'b', length: 2}
+// map(obj, f)
 
 // 引用透明性
 
@@ -221,3 +231,44 @@ const compose = function(f, g) {
 //
 // multAfterAdd(10) // 100
 // addAfterMult(10) // 60
+
+
+//多态
+
+// const we = {
+// 	1: '不二',
+// 	2: '菜瓜',
+// 	3: '灿灿',
+// 	4: '城管',
+// 	5: '东邪',
+// 	6: '枫叶',
+// 	7: '绿间',
+// 	8: '曼巴',
+// 	9: '麻薯',
+// 	10: '瓶子',
+// 	11: '糖饼',
+// 	12: '天吾',
+// 	13: '小米',
+// 	14: '芝士'
+// }
+//
+// function oldDriver(name) {
+//   this.nam = name
+// }
+// oldDriver.prototype.take = function (passenger, tool) {
+//   console.log(`老司机带${passenger.name}上${tool.name}`)
+// }
+// function Passenger(name) {
+//   this.name = name
+// }
+// function Person(name) {
+//   this.passenger = Passenger
+//   this.passenger(name)
+// }
+// function Tool(name) {
+// 	this.name = name
+// }
+// const driver = new oldDriver('driver')
+// const person = new Person(we[Math.floor(Math.random() * 14 + 1)])
+// const tool = new Tool('车')
+// driver.take(person, tool)
