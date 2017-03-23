@@ -173,23 +173,29 @@ const compose = function(f, g) {
 // todo('饭')
 
 // 反柯里化
-// Function.prototype.unCurrying = function () {
-//     return this.call.bind(this);
+// Function.prototype.unCurrying = function() {
+// 	return this.call.bind(this)
 // }
-// // const push = Array.prototype.push.unCurrying()
-// // const obj = {}
-// // push(obj, 'a', 'b')
-// // console.log(obj)
-// const obj = {0:'a', 1:'b', length: 2}
-// const f = function(x){console.log(x)}
+//
+// const push = Array.prototype.push.unCurrying()
+// const obj = {}
+// push(obj, 'a', 'b')
+// console.log(obj)
+
+// const push = (obj, x) => Array.prototype.push.call(obj, ...x)
+// const obj = {}
+// push(obj, ['a', 'b']) // { 0: 'a', 1: 'b', length: 2 }
+
+// const obj = { 0:'a', 1:'b', length: 2 }
+// const f = function(x){ console.log(x) }
 // const map = Array.prototype.map.unCurrying()
 // map(obj, f)
-// const map = function(obj, f){
-//     return Array.prototype.map.call(obj, f);
-// };
-// const f = function(x){console.log(x)}
-// const obj = {0:'a', 1:'b', length: 2}
-// map(obj, f)
+//
+
+// const map = (obj, f) => Array.prototype.map.call(obj, f)
+// const f = function(x){ console.log(x) }
+// const obj = { 0: 'a', 1: 'b', length: 2 }
+// map(obj, f) // a b
 
 // 引用透明性
 
