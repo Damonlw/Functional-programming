@@ -202,6 +202,7 @@ const compose = function(f, g) {
 // const magic = cage => cage[0] = { name: '翠花' }
 // const birdInCage = [{name: 'tweety'}]
 // magic(birdInCage)
+// console.log(birdInCage);
 // birdInCage     // [{ name: '翠花' }]
 
 // const birdInCage = [{name: 'tweety'}]
